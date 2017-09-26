@@ -1,0 +1,47 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+        <button ng-repeat="snb in _textAreaToolbar.buttons" class="btn btn-sm btn-default "
+                ng-click="_textAreaToolbar.handleButtonClick(snb)">
+            <span ng-show="snb._buttonIcon==''" ng-bind="snb._buttonText"></span>
+            <i class={{snb._buttonIcon}}></i>
+        </button>
+    </div>
+    <div class="col-sm-12">
+        <div id="contentEdDiv" title="Enter rhythmic syllable" contenteditable style="min-height: 40px; background-color:white;padding:5px; font-size:16px; "
+             ng-model="_bindModel" spellcheck="false" strip-br="true" autocapitalize="off">
+        </div>
+    </div>
+
+</div>
+<style>
+    #contentEdDiv i, em {
+        border-bottom: 3px double;
+    }
+
+    #contentEdDiv p {
+        margin: 0;
+    }
+
+    #contentEdDiv {
+        border: 1px solid lightgray;
+        border-radius: 4px;
+        white-space: pre;
+        overflow: hidden;
+    }
+
+        #contentEdDiv br {
+            display: none;
+        }
+
+        #contentEdDiv * {
+            display: inline;
+            white-space: pre;
+        }
+
+    button {
+        /*width: 40px;
+            height: 25px;
+            font-size: 15px;
+            text-align: left;*/
+    }
+</style>

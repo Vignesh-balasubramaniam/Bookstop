@@ -1,0 +1,100 @@
+﻿<div class="container-fluid" ng-controller="rhythmBlendTestingApp.controllers.rhythmBlendTestingAppController as RBTCtrl">
+    <img src="images/loader.gif" ng-show="RMMCtrl.isLoadingImageVisible"
+         style="position:fixed;top:35%;left:45%;z-index:9999" />
+
+    <div class="container" style="background-color:whitesmoke;border-radius:8px 8px;box-shadow: 2px 2px 2px 2px #888888;">
+        <form ng-submit="RBTCtrl.generateRhythmBlendJson()">
+            <div class="row">
+                <div class="col-sm-3" style="margin:10px 0 10px 0;">
+
+                    <div class="input-group">
+                        <span class="input-group-addon" style="min-width:100px;color:rgb(51,122,183);"> Name</span>
+                        <input type="text" placeholder="Name" spellcheck="false" ng-model="RBTCtrl.createRhythmBlendJSON.name" class="form-control" required />
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin:10px 0 10px 0;">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="min-width:100px;color:rgb(51,122,183);">Keywords</span>
+                        <input type="text" placeholder="KeyWords" spellcheck="false" ng-model="RBTCtrl.createRhythmBlendJSON.keywords" class="form-control" required />
+                    </div>
+                </div>
+
+
+                <div class="col-sm-3" style="margin:10px 0 10px 0;">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="min-width:100px;color:rgb(51,122,183);">Beats Per Clip</span>
+                        <input type="number" ng-model="RBTCtrl.createRhythmBlendJSON.rhythmDuration" class="form-control">
+                    </div>
+                </div>
+
+                
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="input-group">
+                        <span class="input-group-addon" style="min-width:100px;color:rgb(51,122,183);"> Name</span>
+                        <select ng-model="RBTCtrl.createRhythmBlendJSON.presetId" class=" form-control input-md"
+                                ng-options="p.Id as p.Name for p in RBTCtrl.listOfpresets| orderBy:['Name']">
+                            <option value="">Select a Instrument</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3" >
+                    <a href="#" class="btn btn-sm btn-primary" ng-click="RBTCtrl.addRhythmBlendTracks()">Add Track</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" ng-repeat="i in RBTCtrl.createRhythmBlendJSON.trackDetails" trackby $index
+                     style="margin:10px 0 10px 0;background-color:whitesmoke;padding:10px 10px 10px 10px;">
+
+                    <div class="input-group">
+                        <span><a href="#" class="btn btn-link" ng-click="RBTCtrl.deleteRhythmBlendTracks(i)">X</a></span>
+                        <span class="input-group-addon" style="color:rgb(51,122,183)">Division Count(Track :{{$index+1}})</span>
+                        <input type="number" ng-model="i.divisionCount" class="form-control" aria-describedby="basic-addon1" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div style="text-align:center">
+                    <button class="btn btn-sm btn-primary" type="submit">Create RhythmBlendJSON</button>
+                </div>
+            </div>
+        </form>
+     </div>
+  
+
+
+    <div class="container" style="margin-top:20px;">
+        <div class="row-fluid">
+            <div class="col-sm-4">
+                <button class="btn btn-sm btn-primary" ng-click="RBTCtrl.SaveAllRhythmBlend()">Save RhythmBlendJSON</button>
+            </div>
+        </div>
+        <div class=" row-fluid table-responsive">
+            <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Name</th>
+                    <th>KeyWords</th>
+                    <th>No Of Tracks(Clips/Track)</th>
+                    <th>Status</th>
+                </tr>
+
+                <tr ng-repeat="s in RBTCtrl.listOfRhythmBlendJSON">
+                    <td>{{s.Name}}</td>
+                    <td>{{s.Keywords}}</td>
+                    <td>{{s.Tracks.length}}(5)</td>
+                    <td>
+                        <span ng-show="s.SSClientAssetTag=='0'">
+                            yet to save
+                        </span>
+                        <span ng-show="s.SSClientAssetTag=='1'">
+                            saved
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>

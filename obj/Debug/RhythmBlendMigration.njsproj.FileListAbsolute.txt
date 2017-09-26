@@ -1,0 +1,14 @@
+d:\users\tabshir\my documents\visual studio 2013\Projects\RhythmBlendMigration\RhythmBlendMigration\bin\Microsoft.NodejsTools.WebRole.dll
+D:\users\Tabshir\My Documents\Visual Studio 2013\Projects\RhythmBlendMigration\RhythmBlendMigration\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+D:\migrationApp(New)\RhythmBlendMigration\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+D:\migrationApp(New)\RhythmBlendMigration\bin\Microsoft.NodejsTools.WebRole.dll
+D:\RhythmBlendMigration\RhythmBlendMigration\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+D:\RhythmBlendMigration\RhythmBlendMigration\bin\Microsoft.NodejsTools.WebRole.dll
+E:\projects\RhythmBlendMigration\RhythmBlendMigration\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+E:\projects\RhythmBlendMigration\RhythmBlendMigration\bin\Microsoft.NodejsTools.WebRole.dll
+E:\projects\book_stop\boo_stop\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+E:\projects\book_stop\boo_stop\bin\Microsoft.NodejsTools.WebRole.dll
+E:\projects\book_stop\book_stop\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+E:\projects\book_stop\book_stop\bin\Microsoft.NodejsTools.WebRole.dll
+D:\Newbookstop\assignment\book_stop\obj\Debug\RhythmBlendMigration.njsprojResolveAssemblyReference.cache
+D:\Newbookstop\assignment\book_stop\bin\Microsoft.NodejsTools.WebRole.dll

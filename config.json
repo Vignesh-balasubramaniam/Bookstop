@@ -1,0 +1,43 @@
+﻿{
+    "nodeserver": {
+        "port": "8096"
+    },
+
+    "sarnar_service_dev": {
+        "host": "10.0.0.12",
+        "port": "8112",
+        "ssClientId": "18c25043-74d2-4808-8c37-fc426d481642"
+    },
+
+    "sarnar_service": {
+        "host": "10.0.0.24",
+        "port": "8112",
+        "ssClientId": "18c25043-74d2-4808-8c37-fc426d481642"
+    },
+
+
+    "demo_webapi": {
+        "host": "10.0.0.12",
+        "port": "8112",
+        "ssClientId": "18c25043-74d2-4808-8c37-fc426d481642"
+
+    },
+    "production_webapi": {
+        "host": "10.0.0.24",
+        "port": "8112",
+        "ssClientId": "18c25043-74d2-4808-8c37-fc426d481642"
+    },
+
+
+    "web_api_saving_mutipleRBlend": {
+        "host": "10.0.0.24",
+        "port": "8112",
+        "ssClientId": "18c25043-74d2-4808-8c37-fc426d481642"
+    },
+
+        "web_Api_InstrumentMigration": {
+        "host": "10.0.0.12",
+        "port": "8112",
+        "ssClientId": "18c25043-74d2-4808-8c37-fc426d481642"
+    }
+}

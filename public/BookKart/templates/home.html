@@ -1,0 +1,89 @@
+﻿<div class="container" ng-controller="BookKartApp.conntrollers.BookKartController as bKCtrl">
+   <div class="row">
+       <div class="col-xs-3"></div>
+    <div class="col-xs-6">
+    <form ng-submit="bKCtrl.addNewBook()">
+        <div class="form-group">
+            <label for="ISBN">ISBN:</label>
+            <input type="text" class="form-control" ng-model="bKCtrl.addBook.isbn" id="ISBN" placeholder="Enter ISBN Number" name="ISBN" required />
+        </div>
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <input type="text" class="form-control" id="Name" ng-model="bKCtrl.addBook.name" placeholder="Enter Name of the Book" name="Name" required />
+        </div>
+        <div class="form-group">
+            <label for="Title">Title:</label>
+            <input type="text" class="form-control" ng-model="bKCtrl.addBook.title" id="Title" placeholder="Enter Authors Name" name="Title" required />
+        </div>
+        <div class="form-group">
+            <label for="publication">Publication:</label>
+            <input type="text" class="form-control" ng-model="bKCtrl.addBook.publication" id="publication" placeholder="Enter publishers of the book" name="publication" required />
+        </div>
+        <div class="form-group">
+            <label for="publication">Author:</label>
+            <button class="bnt btn-link" data-toggle="modal" data-target="#myModal">Add New Author</button>
+            <div class="col-sm-12" style="min-height:50px;height:50px;overflow-y:scroll;">
+                <div class="col-sm-3 btn btn-sm btn-link" ng-repeat="s in bKCtrl.authorList" ng-click="bKCtrl.addtoBookOrder(s)">
+                    {{s.firstname}} {{s.lastname}}
+                </div>
+               
+            </div>
+            <div class="col-sm-12">
+                <hr />
+              <div class="col-xs-12">  Books Authors</div>
+                <div class="col-sm-3 btn btn-sm btn-link" style="box-shadow:0 0 0 1px lightblue;position:relative;margin:1px 10px 1px 10px;padding:7px 5px 5px 5px;"ng-repeat="s in bKCtrl.authoresSelected">
+                    {{s.firstname}} {{s.lastname}}
+                    <span class="glyphicon glyphicon-remove" style="position:absolute;top:0;float:right;right:2px;" ng-click="bKCtrl.removeFromAuthors(s.id)"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="Description">Description:</label>
+            <input type="text" class="form-control" ng-model="bKCtrl.addBook.description" id="Description" placeholder="Enter password" name="Description" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Price">Price:</label>
+            <input type="number" class="form-control" ng-model="bKCtrl.addBook.price" id="Price" placeholder="Book Description" name="Price" required />
+        </div>
+        <div class="form-group" style="text-align:center;">
+            <button type="submit" class="btn btn-sm btn-primary " style="padding-left:100px;padding-right:100px;">Submit</button>
+            </div>
+</form>
+        </div>
+    <div class="col-xs-3"></div>
+</div>
+
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Author</h4>
+                </div>
+
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="firstname">First Name:</label>
+                            <input type="text" class="form-control" ng-model="bKCtrl.addAuthor.firstname" id="Author First Name" placeholder="Enter password" name="firstname" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">Last Name:</label>
+                            <input type="text" class="form-control" ng-model="bKCtrl.addAuthor.lastname" id="Author Last Name" placeholder="Enter password" name="lastname" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="text-align:center;">
+                        <button type="submit" class="btn btn-primary" ng-click="bKCtrl.addNewAuthor()" data-dismiss="modal">Submit</button>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+   
+</div>

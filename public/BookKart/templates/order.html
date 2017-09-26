@@ -1,0 +1,141 @@
+﻿<div class="container" ng-controller="BookKartApp.conntrollers.BookKartController as bKCtrl">
+    <div class="loader" ng-hide="bKCtrl.isloadingitems"></div>
+    <div class="row" ng-show="bKCtrl.isloadingitems">
+        <div class="col-sm-12" ng-repeat="s in bKCtrl.orderDetails.items" style="box-shadow:0 0 0 1px whitesmoke;padding:5px 5px;">
+            <div class="col-sm-3">
+                <img src="/BookKart/images/book.jpg" class="img-responsive" alt="Lights" style="width:60%;height:40%;" title="Name :{{s.name}}">
+                <p style="position:absolute;top:20%;left:30px;color:white;font-size:8px;">{{s.name |limitTo:28}}{{s.name.length>24?'..':''}}</p>
+                <p style="position:absolute;top:30%;left:30px;color:white;font-size:8px;">{{s.subject|limitTo:28}}{{s.subject.length>24?'..':''}}</p>
+                <p style="position:absolute;top:80%;left:30px;color:white;font-size:8px">Publication: {{s.publication|limitTo:20}}{{s.publication.length>20?'..':''}}</p>
+            </div>
+            <div class="col-sm-6" style="margin-top:20px;">
+                <p>Name:{{s.name}}</p>
+                <p>Publication:{{s.publication}}</p>
+                <p>{{s.description}}</p>
+                <h4>&#x20b9;{{s.price}}</h4>
+
+
+            </div>
+            <div class="col-sm-3" style="margin-top:60px;">
+
+                <div class="col-sm-6" style="font-size:20px;">
+                    <span>
+                        Quantity :
+                    </span>
+                </div>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" ng-model="s.quantity" />
+
+                </div>
+                <br />
+                <div class="col-sm-12" style="float:right;">
+                    <div class="col-sm-6" style="font-size:20px;margin-top:5px;">
+                        <span style="font-size:20px">Amount : </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <span style="font-size:28px">&#x20b9;</span><span style="font-size:20px"> {{s.price*s.quantity}}</span>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-sm-12" style="margin-top:10px;">
+            <div class="col-sm-8">
+                <h4 style="font-style:italic;color:rgb(51,122,183);">Expexted Delivery Date : {{bKCtrl.orderDetails.deliveryDay}}</h4>
+            </div>
+            <div class="col-sm-4">
+                <div class="col-sm-4">
+                    <button class="btn btn-sm btn-warning btn-sm" ng-click="bKCtrl.calculateTotalAmount()">Total Amount</button>
+                </div>
+                <div class="col-sm-4">
+                    <span style="font-size:24px;">&#x20b9;</span><span style="font-size:20px;">{{bKCtrl.orderDetails.totalAmount}}</span>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <form ng-submit="bKCtrl.placeOrder()">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-10">
+                    <div class="col-sm-12">
+                        <div class=" col-sm-4 form-group">
+                            <label for="Mobile">Mobile Number<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="Mobile" ng-model="bKCtrl.orderDetails.deliveryPhoneNumber" name="Mobile" required />
+                        </div>
+                    </div>
+                    <h4> Address:</h4>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Flat">House/Flat No.<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="Flat" placeholder="House or Flat number" ng-model="bKCtrl.orderDetails.address.houseno" name="Flat" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Street">Street<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="Street" placeholder="Street" ng-model="bKCtrl.orderDetails.address.street" name="Flat" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Area">Area<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="Area" placeholder="Area" ng-model="bKCtrl.orderDetails.address.area" name="Flat" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="City">City<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="City" placeholder="City" ng-model="bKCtrl.orderDetails.address.city" name="City" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="State">State<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="State" placeholder="State" ng-model="bKCtrl.orderDetails.address.state" name="State" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="Pin No">Pin No.<span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="Pin No" placeholder="Pin No." ng-model="bKCtrl.orderDetails.address.pino" name="Pin No" required />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="Pin No">Mode of Payment(&#x20b9;)<span style="color:red">*</span></label>
+                            <br />
+                            <div class="col-sm-4">
+                                <span style="font-size:14px;float:left;">
+                                    <input style="float:left;font-size:14px;" type="radio" ng-model="bKCtrl.orderDetails.modeofPayment" value="0"><span style="float:left;margin:-4px 10px 0 10px;">Cash on Delivery</span>
+                                </span>
+                            </div>
+                            <div class="col-sm-4">
+                                <span style="font-size:14px;float:left;">
+                                    <input style="float:left;font-size:14px;" type="radio" ng-model="bKCtrl.orderDetails.modeofPayment" value="1"><span style="float:left;margin:-4px 10px 0 10px;">card Payment</span>
+                                </span>
+                            </div>
+                            <div class="col-sm-4">
+                                <span style="font-size:14px;float:left;">
+                                    <input style="float:left;font-size:14px;" type="radio" ng-model="bKCtrl.orderDetails.modeofPayment" value="2"><span style="float:left;margin:-4px 10px 0 10px;">Net Banking</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top:10px;">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <button type="submit" class="btn btn-primary btn-block btn-warning" title="BUY NOW">Place a Order</button>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                </div>
+                <div class="col-sm-1"></div>
+            </form>
+        </div>
+    </div>
+    </div>
+

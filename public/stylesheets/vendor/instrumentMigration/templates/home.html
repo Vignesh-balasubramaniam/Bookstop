@@ -1,0 +1,63 @@
+﻿<div class="container" ng-controller="instrumentMigrationApp.controller.InstrumentMigrationController as IMCtrl">
+
+
+
+    <div class="col-sm-6 table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Slno</th>
+                <th>
+                Name(Keyword)
+                </th>
+                
+                <th>
+                    Action
+                </th>
+            </tr>
+            <tr ng-repeat="p in IMCtrl.listOfPresets">
+                <td>{{$index+1}}</td>
+                <td>{{p.Name}}&nbsp;&nbsp;({{p.Keyword}})</td>
+                <td><button class="btn btn-sm btn-primary" ng-click="IMCtrl.migratePresets(p.Id)">Migrate</button></td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="col-sm-6 table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Slno</th>
+                <th>
+                    Name
+                </th>
+
+               
+            </tr>
+            <tr ng-repeat="s in IMCtrl.listOfVirtualInstruments">
+                <td>{{$index+1}}</td>
+                <td>{{s.Name}}</td>
+
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="col-sm-6 table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Slno</th>
+                <th>
+                    Name
+                </th>
+
+
+            </tr>
+            <tr ng-repeat="r in IMCtrl.listofUserAuthoredInstrument">
+                <td>{{$index+1}}</td>
+                <td>{{r.Name}}</td>
+
+            </tr>
+        </table>
+
+    </div>
+</div>

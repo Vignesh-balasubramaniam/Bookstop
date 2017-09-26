@@ -1,0 +1,81 @@
+<!-- views/signup.ejs -->
+<!doctype html>
+<html>
+<head>
+	<title>Sarnar </title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=10"/>
+  <link href="stylesheets/vendor/bootstrap.3.3.4/bootstrap.min.css" rel="stylesheet" />
+  <!-- load bootstrap css -->
+  <link href="stylesheets/vendor/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- load fontawesome -->
+  <link href="stylesheets/vendor/Oswald.css" rel="stylesheet" type="text/css"/>
+  <link href="stylesheets/loginpage/styles.css" rel="stylesheet" type="text/css"/>
+  <script src="javascripts/jquery-1.10.2.min.js"></script>
+  <script>
+    $(document).ready(function(){
+    $("#signupform").submit(function () {
+    $("#signupbutton").html("Signup...");
+    $("#signupbutton").prop("disabled", true);
+    return true;
+    });
+    });
+  </script>
+</head>
+<body>
+  <nav class="navbar navbar-default" style="background-color:rgb(51,122,183)">
+    <div class="container" >
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="/appsportal">
+          <span style="color:white"> Sarnar Software </span>&nbsp;&nbsp;
+         
+        </a>
+
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="center-form panel">
+        <div class="panel-body">
+          <h2 class="text-center">
+            <span class="fa fa-sign-in"></span>&nbsp;&nbsp;Sign up</h2>
+
+	<!-- show any messages that come back with authentication -->
+	<!--<% if (message.length > 0) { %>
+		<div class="alert alert-danger"><%= message %></div>
+	<% } %>-->
+
+	<!-- LOGIN FORM -->
+	<form id="signupform" action="/signup" method="post">
+    <div class="form-group ">
+      <input class="form-control input-lg" type="email" name="email"  placeholder="Email" required autofocus="" />
+    </div>
+    <div class="form-group ">
+      <input class="form-control input-lg" type="text" name="username"  placeholder="Your Name" required />
+    </div>
+		
+		<div class="form-group">
+      
+			<input type="password" class="form-control input-lg" name="password" placeholder="Password" required/>
+		</div>
+
+    <div class="form-group ">
+      Tell us how did you happen to know us ? or what makes you interested in us
+      <textarea class="form-control"  name="usercomment"  placeholder="" required> </textarea>
+    </div>
+		<button id="signupbutton" type="submit" style="font-weight:normal" class="btn btn-block btn-primary btn-lg">Sign up</button>
+	</form>
+
+	<hr>
+
+	<p class="text-center text-muted">Already have an account? <a href="/">Login now</a></p>
+
+</div>
+      </div>
+    </div>
+</div>
+</body>
+</html>

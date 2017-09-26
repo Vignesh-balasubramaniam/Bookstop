@@ -1,0 +1,299 @@
+﻿<div class="container-fluid" ng-controller="SarnarBugFilingApp.controllers.SarnarBugFilingAppController as SBAppCtrl">
+    <div class="container">
+
+        <ul class="nav nav-tabs">
+             
+            <li class="active"><a data-toggle="tab" href="#filedBugs">FiledBugs</a></li>
+            <li><a data-toggle="tab" href="#fixedBugs">FixedBugs</a></li>
+           
+
+        </ul>
+
+        <div class="tab-content" style="margin-top:10px;">
+            <div id="filedBugs" class="tab-pane fade in active ">
+
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="min-width:100px;">TestName</span>
+                            <input type="text" class="form-control" ng-model="SBAppCtrl.id_softwaretester" placeholder="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="min-width:100px;">Appname</span>
+                            <input type="text" class="form-control" ng-model="SBAppCtrl.appname" placeholder="AppName" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="min-width:100px;">BugPriority</span>
+                            <input type="number" ng-model="SBAppCtrl.priority" class="form-control"  aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                </div>
+                <br />
+              
+                  <button class="btn btn-sm btn-primary" style="float:right;margin:2px;" title="File Bugs"
+                        data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-file"></span>FileBug
+                </button>
+
+                <button class="btn btn-sm btn-primary" style="float:right;margin:2px;" title="Add Tester"
+                        data-toggle="modal" data-target="#AddUser">
+                    <span class="glyphicon glyphicon-plus"></span>AddTester
+                </button>
+                <div class=" row-fluid table-responsive">
+                    <table id="buglistTable" class="table table-bordered table-responsive">
+                        <tr>
+                            <th>Tester Name</th>
+                            <th>AppName</th>
+                            <th>BuildDescription</th>
+                            <th>Bugfilingdescription</th>
+                            <th>Filed Date</th>
+                            <th>Bug priority</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr ng-repeat="list in SBAppCtrl._fieldBugList | filter:{appname:SBAppCtrl.appname,id_softwaretester:SBAppCtrl.id_softwaretester, priority:SBAppCtrl.priority}">
+                            <td> {{list.id_softwaretester}}</td>
+                            <td>{{list.appname}}</td>
+                            <td>{{list.builddescription}}</td>
+                            <td>{{list.bugfilingdescription}}</td>
+
+                            <td>{{list.bugfileddate}}</td>
+
+                            <td>{{list.priority}}</td>
+
+
+                            <td>
+                                <button class="btn btn-sm btn-primary" title="update bug"
+                                        data-toggle="modal" data-target="#UpdateBug" ng-click="SBAppCtrl.updateBugModel(list)">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                                <button class="btn btn-sm btn-primary" title="BugFix Submit"
+                                        data-toggle="modal" data-target="#BugFix" ng-click="SBAppCtrl.submitfixId(list)">
+                                    Fix
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="fixedBugs" class="tab-pane fade" style="margin-top:10px;">
+
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <div class="input-group" style="margin:4px 0 4px 0;">
+                            <span class="input-group-addon" style="min-width:100px;">TestName</span>
+                            <input type="text" class="form-control" ng-model="SBAppCtrl.id_softwaretester" placeholder="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="margin:4px 0 4px 0;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="min-width:100px;">Appname</span>
+                            <input type="text" class="form-control" ng-model="SBAppCtrl.appname" placeholder="AppName" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="margin:4px 0 4px 0;">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="min-width:100px;">BugPriority</span>
+                            <input type="number" class="form-control" ng-model="SBAppCtrl.priority" placeholder="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <button class="btn btn-sm btn-primary" style="float:right;margin:2px;" title="File Bugs"
+                            data-toggle="modal" data-target="#myModal">
+                        <span class="glyphicon glyphicon-file"></span>FileBug
+                    </button>
+
+                    <button class="btn btn-sm btn-primary" style="float:right;margin:2px;" title="Add Tester"
+                            data-toggle="modal" data-target="#AddUser">
+                        <span class="glyphicon glyphicon-plus"></span>AddTester
+                    </button>
+                </div>
+                <br />
+                <br />
+                <div class=" row-fluid table-responsive">
+                <table id="buglistTable" class="table table-bordered">
+                    <tr>
+                        <th>Tester Name</th>
+                        <th>AppName</th>
+                        <th>BuildDescription</th>
+                        <th>Bugfixeddescription</th>
+                        <th>Fixed Date</th>
+                        <th>Bug priority</th>
+
+                    </tr>
+
+                    <tr ng-repeat="list in SBAppCtrl._fixedBugList  | filter:{appname:SBAppCtrl.appname,id_softwaretester:SBAppCtrl.id_softwaretester, priority:SBAppCtrl.priority}">
+                        <td> {{list.id_softwaretester}}</td>
+                        <td>{{list.appname}}</td>
+                        <td>{{list.builddescription}}</td>
+                        <td>{{list.bugfilingdescription}}</td>
+
+                        <td>{{list.bugfixeddate}}</td>
+
+                        <td>{{list.priority}}</td>
+                    </tr>
+                </table>
+            </div>
+
+           </div>
+            </div>
+        
+
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">File Bug</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group" style="margin:3px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Tester Name</span>
+                            <select ng-model="SBAppCtrl.slectedTester" class=" form-control input-sm"
+                                    ng-options="p.id as p.name for p in SBAppCtrl.listOfTesters | orderBy:['name']"
+                                    ng-change="SBAppCtrl.changeInTestUser()">
+                                <option value="">Select Tester</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">AppName</span>
+                            <input type="text" class="form-control" id="Keyword" style="color:black;"
+                                   ng-model="SBAppCtrl._bugDescriptionDetails.appName" placeholder="Enter a AppName" spellcheck="false" required />
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">App Build detail</span>
+                            <textarea class="form-control" placeholder="App Build detail" ng-model="SBAppCtrl._bugDescriptionDetails.buildDescription" spellcheck="false"></textarea>
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Bug Description</span>
+                            <textarea class="form-control" placeholder="Bug Description" ng-model="SBAppCtrl._bugDescriptionDetails.bugDescription"></textarea>
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Bug Priority</span>
+                            <input type="number" class="form-control" placeholder="priority" ng-model="SBAppCtrl._bugDescriptionDetails.priority">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-sm btn-primary" data-dismiss="modal" ng-click="SBAppCtrl.fileABug()" spellcheck="false">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="UpdateBug" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Update Bug</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group" style="margin:3px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Tester Name</span>
+                            <select ng-model="SBAppCtrl.slectedTester" class=" form-control input-sm"
+                                    ng-options="p.id as p.name for p in SBAppCtrl.listOfTesters | orderBy:['name']"
+                                    ng-change="SBAppCtrl.changeInTestUser()">
+                                <option value="">Select Tester</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">AppName</span>
+                            <input type="text" class="form-control" id="Keyword" style="color:black;"
+                                   ng-model="SBAppCtrl._bugDescriptionDetails.appName" placeholder="Enter a AppName" spellcheck="false" required />
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">App Build detail</span>
+                            <textarea class="form-control" placeholder="App Build detail" ng-model="SBAppCtrl._bugDescriptionDetails.buildDescription" spellcheck="false"></textarea>
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Bug Description</span>
+                            <textarea class="form-control" placeholder="Bug Description" ng-model="SBAppCtrl._bugDescriptionDetails.bugDescription"></textarea>
+                        </div>
+
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Bug Priority</span>
+                            <input type="number" class="form-control" placeholder="priority" ng-model="SBAppCtrl._bugDescriptionDetails.priority">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-sm btn-primary" data-dismiss="modal" ng-click="SBAppCtrl.updateBug()" spellcheck="false">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="BugFix" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Fixed Bugs</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group" style="margin:5px 0 3px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">BugFix Description</span>
+                            <textarea class="form-control" placeholder="BugFix Description" spellcheck="false" ng-model="SBAppCtrl._bugDescriptionDetails.bugFixDescription"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" ng-click="SBAppCtrl.SubmitFixedBug()" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="AddUser" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Tester</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="input-group" style="margin:5px 0 19px 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">First Name</span>
+                            <input class="form-control" placeholder="First Name" spellcheck="false" ng-model="SBAppCtrl.firstName" />
+                        </div>
+                        <div class="input-group" style="margin:10px 0 0 0;">
+                            <span class="input-group-addon" style="color:rgb(51,122,183)">Last Name</span>
+                            <input class="form-control" placeholder="Last Name" spellcheck="false" ng-model="SBAppCtrl.lastName" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" ng-click="SBAppCtrl.addtester()" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

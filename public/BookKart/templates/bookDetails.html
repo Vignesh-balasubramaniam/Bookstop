@@ -1,0 +1,34 @@
+﻿<div class="container" ng-controller="BookKartApp.conntrollers.BookKartController as bKCtrl">
+    <div class="loader" ng-hide="bKCtrl.isloadingitems"></div>
+    <div class="row" ng-show="bKCtrl.isloadingitems">
+        <div class="col-sm-6">
+            <div class="col-xs-12" style="box-shadow:0 0 0 1px whitesmoke;padding:10px 0 10px 100px;">
+                <img src="/BookKart/images/book.jpg" class="img-responsive" alt="Lights" style="width:75%;height:40%;">
+                <p style="position:absolute;top:20%;left:130px;color:white;font-size:14px;">{{bKCtrl.bookdetails.name|limitTo:48}}{{bKCtrl.bookdetails.name.length>44?'..':''}}</p>
+                <p style="position:absolute;top:30%;left:150px;color:white;font-size:12px;">{{bKCtrl.bookdetails.subject}}</p>
+                <p style="position:absolute;top:80%;left:170px;color:white;">Publication: {{bKCtrl.bookdetails.publication}}</p>
+            </div>
+            <div class="col-sm-12" style="margin:0 0 0 0;padding:10px 10px 10px 10px;" title="ADD TO CART">
+                <div class=" col-xs-5 cartAndBuy" style="background:rgb(255,159,0);" ng-click="bKCtrl.addtocart(bKCtrl.bookdetails.id)">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>ADD TO CART
+                </div>
+
+                <div class="col-xs-5 cartAndBuy" style="background:rgb(251,100,27);" title="BUY NOW" ui-sref="home.orders({bookdetails:bKCtrl.bookdetails.id})">
+                    <span class="glyphicon glyphicon-flash"></span>BUY NOW
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-6" style="margin:0 0 0 0;height:500px;min-height:500px;">
+            <h4>{{bKCtrl.bookdetails.description}}</h4>
+            <h4><span style="font-size:26px;">&#x20b9;</span>  {{bKCtrl.bookdetails.price}}</h4>
+            <h4>Authors:</h4>
+            <ul>
+                <li ng-repeat="i in bKCtrl.bookdetails.authors">
+                    {{i}}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>

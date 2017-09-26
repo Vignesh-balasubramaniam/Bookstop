@@ -1,0 +1,59 @@
+﻿.cartAndBuy {
+    padding:15px 10px 15px 10px;
+    margin:0 20px 0 20px;
+    text-align:center;
+    color:white;
+    border-radius:4px 4px;
+    cursor:pointer;
+   
+}
+
+.cartAndBuy:hover {
+    padding:15px 10px 15px 10px;
+    margin:0 20px 0 20px;
+    text-align:center;
+    color:white;
+    border-radius:4px 4px;
+    cursor:pointer;
+   opacity:0.9;
+}
+
+
+.bookslist {
+    box-shadow:0 0 0 1px whitesmoke;
+    margin:10px 5px 20px 30px;
+    cursor:pointer;
+    padding-left:50px;
+    padding-top:10px;
+}
+
+.bookslist:hover {
+    box-shadow:0 0 0 1px whitesmoke;
+ margin:11px 6px 19px 29px;
+    cursor:pointer;
+ 
+}
+
+  .loader {
+   border: 16px solid #f3f3f3;
+  border-radius: 90%;
+  border-top: 16px solid rgb(51,122,183);
+  width: 120px;
+  height: 120px;
+  position:absolute;top:45%;left:45%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+   -moz-user-select:none;
+   user-select:none;
+}
+
+  
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

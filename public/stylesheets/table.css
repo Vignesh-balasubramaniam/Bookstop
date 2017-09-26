@@ -1,0 +1,158 @@
+﻿.delete {
+font-size:14px;
+} 
+
+
+.delete:hover {
+font-size:14px;
+color:rgb(51,122,183);
+}
+
+.properties {
+text-align:center;
+
+}
+table {
+            width: 100%;
+        }
+
+        thead, tbody, tr, td, th { display: block; }
+
+        tr:after {
+            content: ' ';
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        thead th {
+            height: 30px;
+
+            /*text-align: left;*/
+        }
+
+        tbody {
+            max-height: 420px;
+            overflow-y: auto;
+            height:auto;
+        }
+
+        thead {
+            /* fallback */
+        }
+
+
+        tbody td, thead th {
+            width:30%;
+            height:auto;
+            float: left;
+        }
+       
+        
+        .loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgb(51,122,183);
+  
+  width: 120px;
+  height: 120px;
+  position:absolute;top:45%;left:45%;
+  z-index:99;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} 
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid rgb(51,122,183);
+  width: 120px;
+  height: 120px;
+  position:absolute;top:45%;left:45%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+   -moz-user-select:none;
+   user-select:none;
+}
+
+
+
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+input[type=checkbox] {
+	visibility: hidden;
+}
+
+.checkboxFour label {
+	display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 100px;
+    transition: all .5s ease;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 1;
+    background: grey;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+
+.checkboxFour {
+	width: 24px;
+	height: 24px;
+	background: #ddd;
+	margin: -20px 10px 0 0;
+
+	border-radius: 100%;
+	position: relative;
+    margin-top:4px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.5);
+}
+
+.checkboxFour input[type=checkbox]:checked + label {
+	background: rgb(51,122,183);
+}
+
+
+.selectedSound {
+background:lightgrey !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

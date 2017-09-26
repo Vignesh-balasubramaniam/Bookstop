@@ -1,0 +1,119 @@
+﻿<div class="container-fluid" ng-controller="RSPhraseGenerator.controllers.SnRSPhraseGeneratorController as RBPGTCtrl">
+    <img src="images/loader.gif" ng-show="RBPGTCtrl.isLoadingImageVisible"
+         style="position:fixed;top:35%;left:45%;z-index:9999" />
+
+    <div class="container" ng-click="RBPGTCtrl.doAfterClickOnBody()" style="background-color:whitesmoke;border-radius:8px 8px;box-shadow: 2px 2px 2px 2px #888888;">
+
+        <div class="row">
+
+
+            <!--<div class="input-group">
+                <span class="input-group-addon" style="min-width:100px;color:rgb(51,122,183);"> Name</span>
+                <select ng-model="RBPGTCtrl.syllableGeneratorInput.PresetId" class=" form-control input-md"
+                        ng-options="p.Id as p.Name for p in RBPGTCtrl.listOfpresets| orderBy:['Name']">
+                    <option value="">Select a Instrument</option>
+                </select>
+            </div>-->
+        </div>
+        <div class="row">
+            <snirtextarea syllabletext="RBPGTCtrl.syllableGeneratorInput.InputText">
+            </snirtextarea>
+        </div>
+        <div class="row">
+            <div style="text-align:center">
+                <button class="btn btn-sm btn-primary" ng-click="RBPGTCtrl.generateRhythmSyllablePhrase()">Generate RhythmPhrase</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div>
+                <div>
+                    <p style="position:relative" context-menu="RBPGTCtrl.syllableVariationMenuOptions">
+                        ContextMenu demo
+                        <div id='contextmenu-node' ng-show="RBPGTCtrl.isSyllableListDisplay">
+                            <table class="table  table-condensed table-responsive">
+                                <tr>
+                                    <th>Phrases</th>
+                                    <th>Play</th>
+                                    <th>Action</th>
+                                </tr>
+                                <tr ng-repeat="s in RBPGTCtrl.lstOfgeneratedSyllables">
+                                    <td class="variousphrases"><span ng-bind-html="s"></span></td>
+                                    <td>
+                                        <button class="btn btn-xs btn-primary">
+                                            <span class="glyphicon glyphicon-play"></span>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-xs btn-primary" context-menu="RBPGTCtrl.phraseActionOptionMenu">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </p>
+
+                </div>
+                <!--<div class="container" style="position:absolute" ng-show="RBPGTCtrl.isSyllableListDisplay">
+
+                    <div class=" row-fluid table-responsive">
+                        <table class="table table-bordered table-responsive">
+                            <tr>
+                                <th>Generated Rhythm Phrases</th>
+
+                            </tr>
+
+                            <tr ng-repeat="s in RBPGTCtrl.lstOfgeneratedSyllables">
+                                <td><div ng-bind-html="s"></div></td>
+
+                            </tr>
+                        </table>
+                    </div>
+                </div>-->
+
+
+
+            </div>
+        </div>
+
+        <!--<div class="row">
+            <div style="text-align:center">
+                <button class="btn btn-sm btn-success">ContextMenu demo2</button>
+            </div>
+        </div>-->
+    </div>
+
+
+
+
+</div>
+
+<style>
+    span i {
+        border-bottom: 3px double;
+    }
+
+    #contextmenu-node{
+    position: absolute;
+    background-color: white;
+    border: solid #CCCCCC 1px;
+    height:300px;
+    overflow:auto;
+}
+    .variousphrases{
+       width:100px;
+       overflow:hidden;  
+    }
+
+.contextmenu-item{
+    margin: 0.5em;
+    padding-left: 0.5em;
+}
+
+.contextmenu-item:hover{
+    background-color: #CCCCCC;
+    cursor: default;
+}
+
+</style>
